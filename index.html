@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.D. Bushido Karate - Pace Del Mela</title>
+    <style>
+        /* Reset e stile di base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden; /* Evita il problema di scroll orizzontale */
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeInHeader 1s forwards;
+            transition: all 0.3s ease; /* Transizione fluida per il ridimensionamento */
+        }
+
+        /* Header quando è sceso durante lo scroll */
+        header.scrolled {
+            padding: 5px 0; /* Riduce molto l'altezza dell'header */
+            font-size: 1.2rem; /* Riduce la dimensione del testo notevolmente */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Menu di navigazione */
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #ffdd57;
+            transform: scale(1.1);
+            color: #333;
+        }
+
+        /* Sezioni */
+        section {
+            padding: 100px 0;
+            background-color: #fff;
+            margin-top: 70px;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        section h2 {
+            font-size: 3.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        section img {
+            max-width: 120px;
+            height: auto;
+            margin: 10px;
+            opacity: 0;
+            animation: fadeIn 2.5s forwards;
+            transition: transform 0.3s ease; /* Transizione per l'effetto di ingrandimento */
+        }
+
+        /* Animazione quando si passa sopra ai loghi */
+        section .logos img:hover {
+            transform: scale(1.1); /* Effetto ingrandimento */
+        }
+
+        section a.button {
+            display: inline-block;
+            background-color: #2575fc;
+            color: white;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        section a.button:hover {
+            background-color: #ffdd57;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 3px solid #ffdd57;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+        }
+
+        /* Animazioni */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInHeader {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries per dispositivi mobili */
+        @media screen and (max-width: 768px) {
+            /* Modifiche alle animazioni per evitare che si accavallino */
+            header h1 {
+                animation: fadeIn 1s forwards;
+                animation-delay: 0s;
+            }
+
+            section h2 {
+                animation: fadeIn 1.5s forwards;
+                animation-delay: 0.5s;
+            }
+
+            section p {
+                animation: fadeIn 2s forwards;
+                animation-delay: 1s;
+            }
+
+            section img {
+                animation: fadeIn 2.5s forwards;
+                animation-delay: 1.5s;
+            }
+
+            section a.button {
+                animation: fadeIn 3s forwards;
+                animation-delay: 2s;
+            }
+
+            /* Cambia la durata delle animazioni per dispositivi mobili */
+            header, section, footer {
+                animation-duration: 1s; /* Velocizza l'animazione */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+
+            section h2 {
+                font-size: 2.5rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+
+            section img {
+                max-width: 100px; /* Ridurre la dimensione delle immagini */
+            }
+
+            section a.button {
+                font-size: 1rem;
+                padding: 12px 30px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth; /* Scorrimento fluido */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>A.S.D. Bushido Karate - Pace Del Mela</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="scroll-link">Home</a></li>
+                    <li><a href="#about" class="scroll-link">Chi siamo</a></li>
+                    <li><a href="#contact" class="scroll-link">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <h2>Orgoglio e Passione del Karate Siciliano!</h2>
+            <p>Benvenuti nel nostro sito, un viaggio nel mondo del Karate con la passione e la determinazione che ci contraddistinguono!</p>
+            <a href="#about" class="button scroll-link">Scopri Chi Siamo</a>
+        </div>
+    </section>
+
+    <!-- Chi Siamo Section -->
+    <section id="about">
+        <div class="container">
+            <div class="logos">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKuFVoOtKuY9eVqjcQxFwUlcmYjW_rRZpTjA&s" alt="Logo 1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCs01XJaOBMio670JHV7oFamYqyI1Qbs9TAw&s" alt="Logo 2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/World_Karate_Federation_logo.svg/1200px-World_Karate_Federation_logo.svg.png" alt="Logo 3">
+            </div>
+            <h2>Chi siamo</h2>
+            <p>
+                Siamo l'A.S.D. Bushido Karate di Pace Del Mela, una società sportiva che offre corsi di Karate, 
+                preparazione atletica, percorsi ad ostacoli e sviluppo delle capacità motorie nei bambini. 
+                La nostra passione per il Karate si riflette nei successi che abbiamo ottenuto nelle competizioni 
+                in tutta la Sicilia, grazie al lavoro dei nostri coach: Roberto Carauddo e Marco Calapà. 
+                La nostra palestra è stata, e continua ad essere, un punto di riferimento per l'allenamento e la crescita 
+                dei giovani atleti, formando campioni che si distinguono non solo in ambito regionale, ma anche a livello nazionale. 
+            </p>
+            <a href="#contact" class="button scroll-link">Contattaci</a>
+        </div>
+    </section>
+
+    <!-- Contatti Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contattaci</h2>
+            <p>Per informazioni, prenotazioni o richieste, puoi raggiungerci via email, telefono o attraverso il nostro account TikTok.</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:raftamm10@gmail.com">raftamm10@gmail.com</a></p>
+                <p>Telefono: <a href="tel:+393248365264">+39 324 836 5264</a></p>
+                <p>TikTok: <a href="https://www.tiktok.com/@bushidokaratepacedelmela?_t=8sLYhezTtR8&_r=1" target="_blank">@bushidokaratepacedelmela</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 A.S.D. Bushido Karate - Pace Del Mela. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        // Aggiungi lo scorrimento fluido
+        document.querySelectorAll('.scroll-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Previene il comportamento di default (cioè il salto diretto)
+
+                // Ottieni l'ID del link (cioè l'ancora)
+                const targetId = this.getAttribute('href').substring(1); // Rimuove il "#" dall'ID
+                const targetElement = document.getElementById(targetId);
+
+                // Scorri dolcemente verso l'elemento
+                targetElement.scrollIntoView({
+                    behavior: 'smooth', // Animazione fluida
+                    block: 'start' // Posiziona l'elemento all'inizio della finestra
+                });
+            });
+        });
+
+        // Modifica l'header quando si scorre la pagina
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>
